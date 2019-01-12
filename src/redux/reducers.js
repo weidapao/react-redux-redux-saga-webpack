@@ -8,7 +8,7 @@ const inputApp = (state = initalState, action) => {
     case UPDATE_VAL:
       return { ...state, value: action.text };
     case SHOWINFO:
-      return { ...state, showInfo: state.showInfo + state.value };
+      return { ...state, showInfo: 'current value:' + state.value };
     default:
       return state;
   }

@@ -1,5 +1,5 @@
 import { delay } from 'redux-saga'
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { call, put, takeLatest } from 'redux-saga/effects'
 
 export function* incrementAsync() {
   yield call(delay, 3000)
@@ -7,7 +7,7 @@ export function* incrementAsync() {
 }
 
 export function* watchIncrementAsync() {
-  yield takeEvery('UPDATE_VAL', incrementAsync)
+  yield takeLatest('UPDATE_VAL', incrementAsync)
 }
 
 // single entry point to start all Sagas at once
