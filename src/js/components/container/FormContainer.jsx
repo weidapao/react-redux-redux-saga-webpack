@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import Input from '../presentational/Input.jsx';
 import { updateVal } from '../../../redux/actions';
 import { connect } from 'react-redux';
-import './style.css';
+import './style.less';
 
 class FormContainer extends Component {
   constructor() {
