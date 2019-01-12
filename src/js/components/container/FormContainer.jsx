@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import Input from '../presentational/Input.jsx';
 import { updateVal } from '../../../redux/actions';
 import { connect } from 'react-redux';
+import './style.css';
 
 class FormContainer extends Component {
   constructor() {
@@ -19,17 +20,19 @@ class FormContainer extends Component {
   render() {
     const { seo_title } = this.state;
     return (
-      <form id="article-form">
-        <Input
-          text="SEO title"
-          label="seo_title"
-          type="text"
-          id="seo_title"
-          value={this.props.value}
-          handleChange={this.handleChange}
-        />
-        {this.props.showInfo}
-      </form>
+      <div className="user-container">
+        <form id="article-form">
+          <Input
+            text="SEO title"
+            label="seo_title"
+            type="text"
+            id="seo_title"
+            value={this.props.value}
+            handleChange={this.handleChange}
+          />
+          {this.props.showInfo}
+        </form>
+      </div>
     );
   }
 }
