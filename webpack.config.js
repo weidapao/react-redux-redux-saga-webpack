@@ -5,9 +5,10 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: {
-          loader: ['babel-loader', 'eslint-loader']
-        }
+        use: [
+          {loader: 'babel-loader'}, 
+          {loader: 'eslint-loader'}
+        ]
       },
       {
         test: /\.html$/,
@@ -26,5 +27,11 @@ module.exports = {
       template: './src/index.html',
       filename: './index.html'
     })
-  ]
+  ],
+  devServer: {
+    overlay: {
+      warnings: true,
+      errors: true
+    }
+  }
 };
