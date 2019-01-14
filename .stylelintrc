@@ -1,0 +1,16 @@
+{
+  "extends":"stylelint-config-standard",
+  "rules": {
+    "function-url-quotes": "always",
+    "indentation": 2, 
+    "number-leading-zero": null,
+    "unit-whitelist": [
+      "em",
+      "rem",
+      "s",
+      "%",
+      "px",
+      "deg"
+    ]
+  }
+}
