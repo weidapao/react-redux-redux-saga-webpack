@@ -1,6 +1,7 @@
 import React from 'react'
 import { render } from 'react-dom'
 import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router-dom'
 import createSagaMiddleware from 'redux-saga'
 import { createStore, applyMiddleware } from 'redux'
 import rootSaga from './redux/sagas'
@@ -16,7 +17,9 @@ sagaMiddleware.run(rootSaga)
 
 render(
   <Provider store={store}>
-    <App />
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
   </Provider>,
   document.getElementById('create-article-form')
 )
