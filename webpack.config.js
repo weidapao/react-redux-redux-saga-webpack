@@ -4,7 +4,7 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'index_bundle.js',
-    publicPath: '/'
+    publicPath: '/' // 解决BrowserRouter刷新后404的问题
   },
   module: {
     rules: [
@@ -35,10 +35,10 @@ module.exports = {
     })
   ],
   devServer: {
-    overlay: {
+    overlay: { // 将报错显示在页面上
       warnings: true,
       errors: true
     },
-    historyApiFallback: true
+    historyApiFallback: true // 解决BrowserRouter刷新后404的问题
   }
 };
