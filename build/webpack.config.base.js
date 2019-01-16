@@ -3,8 +3,8 @@ const HtmlWebPackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   output: {
-    path: path.resolve('dist'),
-    filename: 'index_bundle.js',
+    path: path.resolve('dist'), // 添加hash可以防止文件缓存，每次都会生成4位的hash串
+    filename: 'bundle.[hash:4].js',
     publicPath: '/' // 解决BrowserRouter刷新后404的问题
   },
   module: {
@@ -56,8 +56,8 @@ module.exports = {
     new MiniCssExtractPlugin({
       // Options similar to the same options in webpackOptions.output
       // both options are optional
-      filename: '[name].css',
-      chunkFilename: '[id].css'
+      filename: '[name].[hash:4].css',
+      chunkFilename: '[id].[hash:4].css'
     })
   ]
 };
