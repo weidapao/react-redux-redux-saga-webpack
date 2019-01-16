@@ -1,6 +1,5 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 module.exports = {
   output: {
     path: path.resolve('dist'),
@@ -30,23 +29,9 @@ module.exports = {
     extensions: ['.js', '.json', '.jsx']
   },
   plugins: [
-    // 打包前删除上一次的打包文件
-    new CleanWebpackPlugin(['dist'], {
-      root:path.resolve(__dirname, '../'),
-      verbose: true,
-      dry: false
-    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
     })
-  ],
-  devServer: {
-    overlay: {
-      // 将报错显示在页面上
-      warnings: true,
-      errors: true
-    },
-    historyApiFallback: true // 解决BrowserRouter刷新后404的问题
-  }
+  ]
 };
