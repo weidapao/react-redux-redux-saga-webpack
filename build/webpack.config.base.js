@@ -1,5 +1,6 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
   output: {
     path: path.resolve('dist'),
@@ -21,8 +22,27 @@ module.exports = {
           }
         ]
       },
-      { test: /\.css$/, use: ['style-loader', 'css-loader','postcss-loader'] },
-      { test: /\.less$/, use: ['style-loader', 'css-loader','postcss-loader', 'less-loader'] }
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader // 打包拆分出css文件，此时不需要style-loader
+          },
+          'css-loader',
+          'postcss-loader'
+        ]
+      },
+      {
+        test: /\.less$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          'css-loader',
+          'postcss-loader',
+          'less-loader'
+        ]
+      }
     ]
   },
   resolve: {
@@ -32,6 +52,12 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css'
     })
   ]
 };
