@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist'),
@@ -11,10 +13,7 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: [
-          {loader: 'babel-loader'}, 
-          {loader: 'eslint-loader'}
-        ]
+        use: [{ loader: 'babel-loader' }, { loader: 'eslint-loader' }]
       },
       {
         test: /\.html$/,
@@ -29,13 +28,20 @@ module.exports = {
     ]
   },
   plugins: [
+    // 打包前删除上一次的打包文件
+    new CleanWebpackPlugin(['dist'], {
+      verbose: true,
+      dry: false
+    }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
-    })
+    }),
+    new BundleAnalyzerPlugin()
   ],
   devServer: {
-    overlay: { // 将报错显示在页面上
+    overlay: {
+      // 将报错显示在页面上
       warnings: true,
       errors: true
     },
