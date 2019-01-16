@@ -13,7 +13,7 @@ module.exports = function() {
         verbose: true,
         dry: false
       }),
-      new BundleAnalyzerPlugin()
+      // new BundleAnalyzerPlugin()
     ]
   });
 };

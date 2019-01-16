@@ -4,6 +4,7 @@ import Input from '../presentational/Input'
 import { updateVal } from '../../../redux/actions'
 import { connect } from 'react-redux'
 import './style.less'
+import img from '../../../assets/img/25810186.jpg'
 
 class FormContainer extends React.Component {
   constructor() {
@@ -31,6 +32,8 @@ class FormContainer extends React.Component {
           />
           {this.props.showInfo}
         </form>
+        <div className="img-demo"></div>
+        <img src={img} alt=""/>
       </div>
     )
   }
