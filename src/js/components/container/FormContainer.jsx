@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import ReactDOM from 'react-dom'
-import Input from '../presentational/Input.jsx'
+import Input from '../presentational/Input'
 import { updateVal } from '../../../redux/actions'
 import { connect } from 'react-redux'
 import './style.less'

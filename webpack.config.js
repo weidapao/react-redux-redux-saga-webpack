@@ -27,6 +27,9 @@ module.exports = {
       { test: /\.less$/, use: ['style-loader', 'css-loader', 'less-loader'] }
     ]
   },
+  resolve: {
+    extensions: ['.js', '.json', '.jsx']
+  },
   plugins: [
     // 打包前删除上一次的打包文件
     new CleanWebpackPlugin(['dist'], {
