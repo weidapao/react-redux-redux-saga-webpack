@@ -1,1 +1,3 @@
-webpack.config.js
+webpack.config.base.js
+webpack.config.dev.js
+webpack.config.prd.js

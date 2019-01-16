@@ -1,10 +1,9 @@
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 module.exports = {
   output: {
-    path: path.resolve(__dirname, 'dist'),
+    path: path.resolve('dist'),
     filename: 'index_bundle.js',
     publicPath: '/' // 解决BrowserRouter刷新后404的问题
   },
@@ -33,14 +32,14 @@ module.exports = {
   plugins: [
     // 打包前删除上一次的打包文件
     new CleanWebpackPlugin(['dist'], {
+      root:path.resolve(__dirname, '../'),
       verbose: true,
       dry: false
     }),
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
-    }),
-    new BundleAnalyzerPlugin()
+    })
   ],
   devServer: {
     overlay: {
